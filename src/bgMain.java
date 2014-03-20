@@ -31,6 +31,24 @@ public class bgMain {
 			
 		}
 		inFile.close();
+		//Here's the fun part
+		int age1 = 20, age2 = 30;//change ages later
+		List<ArtistNode> mostD = bg.findMostDArtists(age1, age2);
+		System.out.println("Most Distinctive Artists for " + age1 + " and " + age2 + " are: ");
+		printArtistList(mostD);
+		
+		List<ArtistNode> mostH = bg.findMostHArtists();
+		System.out.println("Most Homogeneous Artists: ");
+		printArtistList(mostH);
+		
+		
+		ArtistNode mostP = bg.findMostPopularArtistByAge(age1);
+		System.out.println("The Most Popular Artist: " + mostP.getArtistName());
+		
+		List<ArtistNode> mostS = bg.findMostSArtists(age1, age2);
+		System.out.println("Most Shared Artists between " + age1 + " and " + age2 + " are: ");
+		printArtistList(mostS);
+		
 	}
 	
 	public static void oldTest(){
@@ -105,5 +123,18 @@ public class bgMain {
 		}
 		
 	}
-
+	public static void printArtistList(List<ArtistNode> artList){
+		for(int i = 0 ; i < artList.size(); i++){
+			System.out.print(artList.get(i).getArtistName());
+			if(i != artList.size() - 1){
+				 System.out.print(", ");
+			}
+			// 5 artists per line
+			if((i + 1) % 5 == 0){
+				System.out.println();
+			}
+			
+		}
+		System.out.println();
+	}
 }
