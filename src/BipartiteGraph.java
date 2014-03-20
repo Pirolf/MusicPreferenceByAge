@@ -235,4 +235,7 @@ public class BipartiteGraph {
 		return hArtists;
 	}
 	
+	public HashMap<Integer, ArtistNode> getBGHashMap(){
+		return BGMap;
+	}
 }

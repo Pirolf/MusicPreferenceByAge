@@ -9,7 +9,7 @@ public class AgeGroupNode extends BNode{
 		this.ageLo = ageLo;
 		this.ageHi = ageHi;
 		numListeners = 0;
-		ranking = -1;
+		ranking = 0;
 	}
 	public int getLo(){
 		return ageLo;
