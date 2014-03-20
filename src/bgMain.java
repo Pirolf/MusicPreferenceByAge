@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class bgMain {
 
 	public static void main(String[] args) throws IOException{
-		File dataFile = new File("data.txt");
+		File dataFile = new File("src/data");
 		Scanner inFile = new Scanner(dataFile);
 		String currLine = "";
 		String currArtistName = "";
@@ -32,18 +32,22 @@ public class bgMain {
 		}
 		inFile.close();
 		//Here's the fun part
-		int age1 = 20, age2 = 30;//change ages later
+		bg.rankArtistsForAllAges();
+		int age1 = 28, age2 = 50;//change ages later
 		List<ArtistNode> mostD = bg.findMostDArtists(age1, age2);
 		System.out.println("Most Distinctive Artists for " + age1 + " and " + age2 + " are: ");
 		printArtistList(mostD);
+		System.out.println();
 		
 		List<ArtistNode> mostH = bg.findMostHArtists();
 		System.out.println("Most Homogeneous Artists: ");
 		printArtistList(mostH);
+		System.out.println();
 		
 		
 		ArtistNode mostP = bg.findMostPopularArtistByAge(age1);
-		System.out.println("The Most Popular Artist: " + mostP.getArtistName());
+		System.out.println("The Most Popular Artist for age " + age1 + " is: " + mostP.getArtistName());
+		System.out.println();
 		
 		List<ArtistNode> mostS = bg.findMostSArtists(age1, age2);
 		System.out.println("Most Shared Artists between " + age1 + " and " + age2 + " are: ");
@@ -124,7 +128,7 @@ public class bgMain {
 		
 	}
 	public static void printArtistList(List<ArtistNode> artList){
-		for(int i = 0 ; i < artList.size(); i++){
+		for(int i = 0 ; i < 10; i++){
 			System.out.print(artList.get(i).getArtistName());
 			if(i != artList.size() - 1){
 				 System.out.print(", ");

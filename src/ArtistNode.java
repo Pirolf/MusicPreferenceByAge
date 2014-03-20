@@ -1,6 +1,6 @@
 
 public class ArtistNode extends BNode{
-	private static final int numAgeGroups = 10;
+	private static final int numAgeGroups = 20;
 	private static final int startAge = 10;
 	private static final int ageCoverage = 5;
 	private String artistName;
