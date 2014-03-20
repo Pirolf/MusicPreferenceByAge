@@ -53,6 +53,11 @@ public class bgMain {
 		for(int i = 0; i < mostS.size(); i++){
 			System.out.print(mostS.get(i).getArtistName() +", ");
 		}
+		
+		List<ArtistNode> mostD = bg.findMostDArtists(18, 32);
+		for(int i = 0; i < mostD.size(); i++){
+			System.out.print(mostD.get(i).getArtistName() +", ");
+		}
 	}
 
 }

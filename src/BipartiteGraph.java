@@ -165,6 +165,7 @@ public class BipartiteGraph {
 			int rk1 = currArtist.getAgeGroupByAge(age1).getRanking();
 			int rk2 = currArtist.getAgeGroupByAge(age2).getRanking();
 			int currDiff = Math.abs(rk1 - rk2);
+			/*
 			if(rkDiff.isEmpty()){
 				rkDiff.add(currDiff);
 				dArtists.add(currArtist);
@@ -175,6 +176,27 @@ public class BipartiteGraph {
 					rkDiff.add(i, currDiff);
 					dArtists.add(i, currArtist);
 					replaced = true;
+				}
+			}
+			*/
+			if(rkDiff.isEmpty()){
+				rkDiff.add(currDiff);		
+				dArtists.add(currArtist);
+			}else{
+				boolean inserted = false;
+				//System.out.println(rkDiff.size());
+				int currRkDiffSize = rkDiff.size();
+				for(int i = 0; i < currRkDiffSize && !inserted; i++){
+					if(currDiff >= rkDiff.get(i)){
+						rkDiff.add(i, currDiff);
+						dArtists.add(i, currArtist);
+						inserted = true;
+						//System.out.println(rkDiff.size());
+					}
+				}
+				if(!inserted){
+					rkDiff.add(currDiff);
+					dArtists.add(currArtist);
 				}
 			}
 		}
