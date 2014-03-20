@@ -36,6 +36,10 @@ public class bgMain {
 		bg.addArtist("Adam", 17);
 		bg.getBGHashMap().get(("Adam").hashCode()).getAgeGroupByAge(16).incNumListeners();
 		bg.getBGHashMap().get(("Adam").hashCode()).getAgeGroupByAge(16).incNumListeners();
+
+		bg.getBGHashMap().get(("Adam").hashCode()).getAgeGroupByAge(16).incNumListeners();
+
+		bg.getBGHashMap().get(("Adam").hashCode()).getAgeGroupByAge(16).incNumListeners();
 		
 		//bg.rankArtistsByAge(16);
 		//System.out.println(bg.findMostPopularArtistByAge(16).getArtistName());
@@ -57,6 +61,17 @@ public class bgMain {
 		List<ArtistNode> mostD = bg.findMostDArtists(18, 32);
 		for(int i = 0; i < mostD.size(); i++){
 			System.out.print(mostD.get(i).getArtistName() +", ");
+		}
+		
+		ArtistNode mostPop31 = bg.findMostPopularArtistByAge(31);
+		System.out.println(mostPop31.getArtistName());
+		
+		ArtistNode mostPop15 = bg.findMostPopularArtistByAge(15);
+		System.out.println(mostPop15.getArtistName());
+		
+		List<ArtistNode> mostH = bg.findMostHArtists();
+		for(int i = 0; i < mostH.size(); i++){
+			System.out.print(mostH.get(i).getArtistName() +", ");
 		}
 	}
 

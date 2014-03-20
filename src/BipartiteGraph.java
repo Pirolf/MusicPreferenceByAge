@@ -232,7 +232,7 @@ public class BipartiteGraph {
 			if(currRk > worstRk){
 				worstRk = currRk;
 			}
-			currStartAge += ageCoverage * i;
+			currStartAge += ageCoverage;
 		}
 		return worstRk;	
 	}
@@ -252,7 +252,7 @@ public class BipartiteGraph {
 		return mostHArtist;	
 	}
 
-	public List<ArtistNode> findMostHArtists(int numArtists){
+	public List<ArtistNode> findMostHArtists(){
 		Set<Map.Entry<Integer, ArtistNode>> allArtists = BGMap.entrySet();
 		List<ArtistNode> hArtists = new LinkedList<ArtistNode>();
 		List<Integer> minWRks = new LinkedList<Integer>();
@@ -260,6 +260,7 @@ public class BipartiteGraph {
 		for (Map.Entry<Integer, ArtistNode> entry : allArtists) {	    	   
 			ArtistNode currArtist = entry.getValue();
 			int currWorstRk = findWorstRankingByArtist(currArtist);
+			/*
 			if(minWRks.isEmpty()){
 				minWRks.add(currWorstRk);
 				hArtists.add(currArtist);
@@ -270,6 +271,27 @@ public class BipartiteGraph {
 					minWRks.add(i, currWorstRk);
 					hArtists.add(i, currArtist);
 					replaced = true;
+				}
+			}
+			*/
+			if(minWRks.isEmpty()){
+				minWRks.add(currWorstRk);		
+				hArtists.add(currArtist);
+			}else{
+				boolean inserted = false;
+				//System.out.println(rkDiff.size());
+				int currSize = minWRks.size();
+				for(int i = 0; i < currSize && !inserted; i++){
+					if(currWorstRk <= minWRks.get(i)){
+						minWRks.add(i, currWorstRk);
+						hArtists.add(i, currArtist);
+						inserted = true;
+						//System.out.println(rkDiff.size());
+					}
+				}
+				if(!inserted){
+					minWRks.add(currWorstRk);
+					hArtists.add(currArtist);
 				}
 			}
 		}
