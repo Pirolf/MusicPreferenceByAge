@@ -165,20 +165,6 @@ public class BipartiteGraph {
 			int rk1 = currArtist.getAgeGroupByAge(age1).getRanking();
 			int rk2 = currArtist.getAgeGroupByAge(age2).getRanking();
 			int currDiff = Math.abs(rk1 - rk2);
-			/*
-			if(rkDiff.isEmpty()){
-				rkDiff.add(currDiff);
-				dArtists.add(currArtist);
-			}
-			boolean replaced = false;
-			for(int i = 1; i < rkDiff.size() && !replaced; i++){
-				if(currDiff >= rkDiff.get(i)){
-					rkDiff.add(i, currDiff);
-					dArtists.add(i, currArtist);
-					replaced = true;
-				}
-			}
-			*/
 			if(rkDiff.isEmpty()){
 				rkDiff.add(currDiff);		
 				dArtists.add(currArtist);
@@ -260,20 +246,6 @@ public class BipartiteGraph {
 		for (Map.Entry<Integer, ArtistNode> entry : allArtists) {	    	   
 			ArtistNode currArtist = entry.getValue();
 			int currWorstRk = findWorstRankingByArtist(currArtist);
-			/*
-			if(minWRks.isEmpty()){
-				minWRks.add(currWorstRk);
-				hArtists.add(currArtist);
-			}
-			boolean replaced = false;
-			for(int i = 1; i < minWRks.size() && !replaced; i++){
-				if(currWorstRk <= minWRks.get(i)){
-					minWRks.add(i, currWorstRk);
-					hArtists.add(i, currArtist);
-					replaced = true;
-				}
-			}
-			*/
 			if(minWRks.isEmpty()){
 				minWRks.add(currWorstRk);		
 				hArtists.add(currArtist);

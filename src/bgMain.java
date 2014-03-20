@@ -1,9 +1,39 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class bgMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
+		File dataFile = new File("data.txt");
+		Scanner inFile = new Scanner(dataFile);
+		String currLine = "";
+		String currArtistName = "";
+		int currListenerAge = 0;
+		String[] currArtistAgePair;
+		BipartiteGraph bg = new BipartiteGraph();
+		HashMap<Integer, ArtistNode> bgMap = bg.getBGHashMap();
+		while(inFile.hasNextLine()){
+			currLine = inFile.nextLine();
+			currArtistAgePair = currLine.split(",");
+			currArtistName = currArtistAgePair[0];
+			currListenerAge = Integer.parseInt(currArtistAgePair[1]);
+			if(!bgMap.containsKey(currArtistName.hashCode())){
+				//if this artist does not exist
+				bg.addArtist(currArtistName, currListenerAge);
+			}else{
+				//else increment the artist's listeners
+				bgMap.get(currArtistName.hashCode()).getAgeGroupByAge(currListenerAge).incNumListeners();
+			}
+			
+		}
+		inFile.close();
+	}
+	
+	public static void oldTest(){
 		BGTester.testAddArtist("YUCHENG");
 		BGTester.testAddArtist("Kevin Alford");
 		BipartiteGraph bg = BGTester.testBGConstrut();
@@ -73,6 +103,7 @@ public class bgMain {
 		for(int i = 0; i < mostH.size(); i++){
 			System.out.print(mostH.get(i).getArtistName() +", ");
 		}
+		
 	}
 
 }
