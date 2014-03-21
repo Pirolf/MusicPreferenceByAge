@@ -31,6 +31,7 @@ public class bgMain {
 			
 		}
 		inFile.close();
+		
 		//Here's the fun part
 		bg.rankArtistsForAllAges();
 		int age1 = 28, age2 = 50;//change ages later
