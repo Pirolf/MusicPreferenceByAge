@@ -8,13 +8,22 @@ public class BipartiteGraph {
 	public BipartiteGraph(){
 		BGMap = new HashMap<Integer, ArtistNode>();
 	}
-
+	/**
+	 * Add an artists to the graph if the artist is not in the graph yet
+	 * and increment listeners
+	 * @param artistName
+	 * @param listenerAge
+	 */
 	public void addArtist(String artistName, int listenerAge){
 		ArtistNode artist = new ArtistNode(artistName);
 		artist.getAgeGroupByAge(listenerAge).incNumListeners();
 		BGMap.put(artist.getKey(), artist);
 	}
-
+	/**
+	 * Get artistNode given artist name
+	 * @param name
+	 * @return
+	 */
 	public ArtistNode lookUpArtist(String name){
 		if(BGMap.containsKey(name.hashCode())){
 			return BGMap.get(name.hashCode());
@@ -22,7 +31,14 @@ public class BipartiteGraph {
 			return null;
 		}
 	}
-
+	/**
+	 * Get listener number of an artist given artist name and listener age group
+	 * (look up for the age group given an age)
+	 * @param name
+	 * @param age
+	 * @return the artist's listener number of the age group the age falls in
+	 * 0 if artist does not exist in the graph
+	 */
 	public int getNumListenersByArtistAge(String name, int age){
 		ArtistNode artist = lookUpArtist(name);
 		if(artist == null){
@@ -105,6 +121,12 @@ public class BipartiteGraph {
 		}
 		return mostSharedArtist;
 	}
+	/**
+	 * Find most shared artists given two ages
+	 * @param age1
+	 * @param age2
+	 * @return
+	 */
 	public List<ArtistNode> findMostSArtists(int age1, int age2){
 		List<Integer> rkDiff = new LinkedList<Integer>();
 		List<ArtistNode> sArtists = new LinkedList<ArtistNode>();
